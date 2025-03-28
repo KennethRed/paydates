@@ -46,20 +46,20 @@ class GeneratePayrollDates extends Command
         $fromDateInput = text(
             label: 'What is the start date?',
             placeholder: 'E.g. 2025-01-01',
-            default: '2025-01-01',
+            default: Carbon::now()->firstOfMonth()->format("Y-m-d"),
             hint: 'Please insert a valid date in year, month and day format'
         );
 
         $endDateInput = text(
             label: 'What is the start date?',
             placeholder: 'E.g. 2025-12-31',
-            default: '2025-12-31',
+            default: Carbon::Now()->endOfYear()->format("Y-m-d"),
             hint: 'Please insert a valid date in year, month and day format'
         );
 
         try{
-            $fromDate = new Carbon($fromDateInput);
-            $endDate = new Carbon($endDateInput);
+            $fromDate = (new Carbon($fromDateInput))->firstOfMonth();
+            $endDate = (new Carbon($endDateInput))->lastOfMonth();
         }
         catch(InvalidFormatException $e){
             $this->error("Invalid date or dates where inserted.");

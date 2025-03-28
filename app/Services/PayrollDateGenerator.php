@@ -111,6 +111,8 @@ class PayrollDateGenerator
 
     public function flattenedDates(): Generator
     {
+        // @todo: implement fix for bonus month date which is out of range, here or at bonusPaymentDates()
+
         /** @var Carbon $period */
         foreach(CarbonPeriod::create($this->startDate,'1 month', $this->endDate) as $period){
             yield [

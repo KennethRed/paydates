@@ -17,6 +17,7 @@ Should the application remain only a simple CLI interface then a more stripped d
 
 Should this repository be a data-hub of some sorts then a stripped down version of Laravel named Laravel Zero could be considered.
 
+The only 'external' package that was used is spatie/simple-excel, there are many packages that do the same, spatie/simple-excel is as the name states, simple. The package is supported and actively maintained.
 
 ## Prerequisites
 - have docker-compose installed, if you have docker desktop this is already the case.

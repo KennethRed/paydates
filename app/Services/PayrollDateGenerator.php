@@ -31,7 +31,7 @@ class PayrollDateGenerator
 
     private function validation()
     {
-        if ($this->startDate > $this->endDate) {
+        if ($this->startDate->greaterThan($this->endDate) || $this->startDate->equalTo($this->endDate)) {
             throw new InvalidDateRangeException();
         }
     }
@@ -57,6 +57,11 @@ class PayrollDateGenerator
             }
 
             if(!$date->isWeekend()){
+
+                /** 
+                 * usage of targetDate and actualDate allows for future changes in rules: 
+                 *  for example when the payment date is moved forwards instead of backwards.
+                 */
                 yield [
                     'targetDate' => $date->clone(), 
                     'actualDate' => $date->clone() 
@@ -64,8 +69,11 @@ class PayrollDateGenerator
             };
 
             if($date->isWeekend()){
-                // Would substract 6 or 7 days(for saturday or sunday), and add 5 days(Friday) to get the last 
-                // day of the month before the weekend.
+
+                /** 
+                 * Would substract 6 or 7 days(for saturday or sunday), and add 5 days(Friday) to get the last 
+                 * day of the month before the weekend.
+                 */
                 yield [
                     'targetDate' => $date->clone(), 
                     'actualDate' => $date->subDays($this->dayOfWeekStartingFromMonday($date))

@@ -13,7 +13,9 @@ In addition Laravel was picked with a bit of foresight as this is now just a com
 
 A user interface would be preferred where payroll could log in and see/export this info themselves preventing noise for the development team (ie: can you export X, can you make an excel file, etc). For this simple setup i would suggest a Filament admin panel, or integrate this feature in an existing application if that already exists.
 
-Should the application remain only a simple CLI interface then a more stripped down framework (or a cloud function/lamda function would be even better), should this repository be a data-hub of some sorts then a stripped down version of Laravel named Laravel Zero could be considered.
+Should the application remain only a simple CLI interface then a more stripped down framework or a cloud function/lamda function would be a better solution. 
+
+Should this repository be a data-hub of some sorts then a stripped down version of Laravel named Laravel Zero could be considered.
 
 
 ## Prerequisites
@@ -21,6 +23,8 @@ Should the application remain only a simple CLI interface then a more stripped d
 
 ## First install and setup
 ``` bash
+git clone git@github.com:KennethRed/paydates.git
+cd paydates
 cp .env.example .env
 docker-compose up -d
 docker-compose exec php composer install

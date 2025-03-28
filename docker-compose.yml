@@ -1,0 +1,13 @@
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        volumes: 
+            - .:/app
+        ports:
+            - ":9000"
+  
+networks:
+    default:
+        name: basworld-paydates

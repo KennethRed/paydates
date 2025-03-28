@@ -119,8 +119,8 @@ class PayrollDateGenerator
                     ->first(fn(array $date) => $date['targetDate']->month === $period->month 
                     && $date['targetDate']->year === $period->year)['actualDate'],
                 'bonus_payment_date' =>  collect($this->bonusPaymentDates())
-                    ->first(fn(array $date) => $date['targetDate']->month === $period->month 
-                    && $date['targetDate']->year === $period->year)['actualDate']
+                    ->first(fn(array $date) => $date['targetDate']->month - 1 === $period->month  
+                    && $date['targetDate']->year === $period->year)['actualDate'] ?? null
             ];
         }
     }
